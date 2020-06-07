@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "985651772777",
+    "firebase_url": "https://store-cdb88.firebaseio.com",
+    "project_id": "store-cdb88",
+    "storage_bucket": "store-cdb88.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985651772777:android:9429eea79452e8d1a011f8",
+        "android_client_info": {
+          "package_name": "com.mody.store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "985651772777-hhtgqbjh18930c2b7ned68rlqs3q46k8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGfs-khzuGPi3E1adaLgfPZsPS-ovuEaM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "985651772777-hhtgqbjh18930c2b7ned68rlqs3q46k8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
