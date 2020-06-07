@@ -1,10 +1,6 @@
 import 'dart:io';
-import 'dart:async';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:store/client_screens/products.dart';
 import 'package:store/utilites/button.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -22,39 +18,12 @@ class _AddProductsState extends State<AddProducts> {
   File _image;
   final picker = ImagePicker();
 
-
-  Future<void> add() async {
-
-
-    Firestore.instance
-        .collection('products')
-        .document()
-        .setData({'name': pName, 'price': pPrice,'category':pCategory,'description': pDesc, });
-getImage();
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Products(),
-        ));
-  }
-
   void getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
     setState(() {
       _image = File(pickedFile.path);
     });
-    addImageToFirebase();
-  }
-
-
-  void addImageToFirebase(){
-
-    final StorageReference firebaseStorageRef =
-    FirebaseStorage.instance.ref().child('products/myimage.jpg');
-    final StorageUploadTask task =
-    firebaseStorageRef.putFile(_image);
-
   }
 
   @override
@@ -73,19 +42,19 @@ getImage();
               height: 16,
             ),
             NewTextField(
-              onChanged: (value)=>pName= value,
+              onChanged: (value) => pName = value,
               hintText: 'Product Name',
             ),
             NewTextField(
-              onChanged: (value)=>pPrice=value,
+              onChanged: (value) => pPrice = value,
               hintText: 'Product Price',
             ),
             NewTextField(
-              onChanged: (value)=>pCategory=value,
+              onChanged: (value) => pCategory = value,
               hintText: 'Category',
             ),
             NewTextField(
-              onChanged: (value)=>pDesc=value,
+              onChanged: (value) => pDesc = value,
               hintText: 'Description',
             ),
             SizedBox(
@@ -100,7 +69,7 @@ getImage();
             ),
             MyButton(
               text: 'Add Product',
-              onPressed: add,
+              onPressed: () {},
             ),
             SizedBox(
               height: 8,
@@ -114,8 +83,9 @@ getImage();
 
 class NewTextField extends StatelessWidget {
   final String hintText;
-final Function onChanged;
-  NewTextField({this.hintText,this.onChanged});
+  final Function onChanged;
+
+  NewTextField({this.hintText, this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -133,8 +103,4 @@ final Function onChanged;
       ),
     );
   }
-
-
-
-
 }

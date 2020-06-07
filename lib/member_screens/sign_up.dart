@@ -22,27 +22,6 @@ class _SignUpState extends State<SignUp> {
 
   var type;
 
-  final FirebaseAuth _aut = FirebaseAuth.instance;
-
-  Future<void> registerUser() async {
-    FirebaseUser user = (await _aut.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
-    ))
-        .user;
-
-    Firestore.instance
-        .collection('users')
-        .document()
-        .setData({'userid': user.uid, 'name': name, 'type': selectedItem,'email':email});
-
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Login(),
-        ));
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -134,7 +113,7 @@ class _SignUpState extends State<SignUp> {
             ),
             MyButton(
               text: "Sing Up",
-              onPressed: registerUser,
+              onPressed: () {},
             ),
             SizedBox(
               height: 16,
