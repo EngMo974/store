@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:store/model/address_model.dart';
 import 'package:store/model/products_model.dart';
 
 class AddressDatabase {
@@ -24,6 +25,9 @@ class AddressDatabase {
   String tableName = "address_table";
   String _id = "id";
   String __adress = "address";
+  String __name = "name";
+  String __city = "city";
+  String __phone = "phone";
 
 
   Future<Database> get database async {
@@ -60,9 +64,12 @@ class AddressDatabase {
     return list;
   }
 
-  Future<int> insertAddress(ProductsModel productsDB) async {
+  Future<int> insertAddress(AddressModel addressModel) async {
     Database db = await this.database;
-    var result = await db.insert(tableName, productsDB.toMap());
+    var result = await db.insert(tableName, addressModel.toMap());
     return result;
   }
+
+
+
 }

@@ -32,17 +32,10 @@ class _AddProductsState extends State<AddProducts> {
   }
 
   void insertProduct() async {
-    if (productsModel.category != null &&
-        productsModel.price != null &&
-        productsModel.name != null &&
-        productsModel.image != null) {
-      var s = await productsDatabase.insertProduct(productsModel);
-      print(s);
-    } else {
-      print('invalid insertion');
-    }
+    var s = await productsDatabase.insertProduct(productsModel);
+    print(s);
 
-    var g = await productsDatabase.productsList();
+    var g = await productsDatabase.getAllProducts();
     print(g);
     Navigator.push(
         context,
@@ -66,7 +59,6 @@ class _AddProductsState extends State<AddProducts> {
         appBar: AppBar(
           title: Text('Add Product'),
         ),
-        resizeToAvoidBottomPadding: false,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

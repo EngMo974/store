@@ -21,7 +21,7 @@ class ProductsDatabase {
   }
 
   static Database _database;
-  String tableName = "products_table";
+  String tableName = "productss_table";
   String _id = "id";
   String __name = "name";
   String __price = "price";
@@ -38,19 +38,20 @@ class ProductsDatabase {
 
   Future<Database> initializedDatabase() async {
     Directory directory = await getApplicationDocumentsDirectory();
-    String path = directory.path + "products.db";
+    String path = directory.path + "productss.db";
 
-    var userDB = await openDatabase(path, version: 1, onCreate: createDatabase);
+    var userDB =
+        await openDatabase(path, version: 1, onCreate: await createDatabase);
     return userDB;
   }
 
-  void createDatabase(Database db, int version) async {
+  Future<List<ProductsModel>> createDatabase(Database db, int version) async {
     await db.execute(
         "CREATE TABLE $tableName($_id INTEGER PRIMARY KEY AUTOINCREMENT, $__name TEXT, $__price TEXT," +
             " $__category TEXT, $__desc TEXT, $__image TEXT )");
   }
 
-  Future<List<Map<String, dynamic>>> productsList() async {
+   productsList() async {
     Database db = await this.database;
     var result = await db.query(tableName, orderBy: "$_id ASC");
     return result;
@@ -58,7 +59,7 @@ class ProductsDatabase {
 
   getAllProducts() async {
     final db = await database;
-    var res = await db.query(tableName);
+    var res = await db.query(tableName, orderBy: "$_id ASC");
     List<ProductsModel> list =
         res.isNotEmpty ? res.map((c) => ProductsModel.fromMap(c)).toList() : [];
     return list;
