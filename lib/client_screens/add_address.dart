@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:store/mershant_screens/add_products.dart';
 import 'package:store/model/address_model.dart';
-import 'package:store/utilites/address_db.dart';
-import 'package:store/utilites/button.dart';
+import 'package:store/utilites/addressDatabase.dart';
+import 'package:store/utilites/my_btton.dart';
 
-import 'confirm_page.dart';
+import 'confirmation.dart';
 
 class AddAddress extends StatefulWidget {
   @override

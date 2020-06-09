@@ -51,12 +51,6 @@ class ProductsDatabase {
             " $__category TEXT, $__desc TEXT, $__image TEXT )");
   }
 
-   productsList() async {
-    Database db = await this.database;
-    var result = await db.query(tableName, orderBy: "$_id ASC");
-    return result;
-  }
-
   getAllProducts() async {
     final db = await database;
     var res = await db.query(tableName, orderBy: "$_id ASC");

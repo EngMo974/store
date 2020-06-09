@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:store/model/address_model.dart';
-import 'package:store/utilites/address_db.dart';
-import 'package:store/utilites/button.dart';
-import 'package:store/utilites/radio.dart';
+import 'package:store/utilites/addressDatabase.dart';
+import 'package:store/utilites/my_btton.dart';
+
 
 import 'add_address.dart';
 import 'my_order.dart';
@@ -47,7 +47,7 @@ class _ConfirmPageState extends State<ConfirmPage> {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        MyRadio(),
+
                         Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[

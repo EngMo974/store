@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:store/mershant_screens/order_details.dart';
 
 
-class Orders extends StatefulWidget {
+class OrderList extends StatefulWidget {
   @override
-  _OrdersState createState() => _OrdersState();
+  _OrderListState createState() => _OrderListState();
 }
 
-class _OrdersState extends State<Orders> {
+class _OrderListState extends State<OrderList> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,7 +37,7 @@ class _OrdersState extends State<Orders> {
                         ),
                         Text(
                           "\$34",
-                          style: TextStyle(color: Colors.blue),
+                          style: TextStyle(color: Colors.redAccent),
                         ),
                         Text('Client Name'),
                         Text('City'),
@@ -55,7 +55,7 @@ class _OrdersState extends State<Orders> {
                             ),
                           );
                         },
-                        color: Colors.cyanAccent[400],
+                        color: Colors.red[400],
                         child: Text(
                           'Details',
                           style: TextStyle(

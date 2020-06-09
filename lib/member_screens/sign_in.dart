@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:store/member_screens/sign_up.dart';
 import 'package:store/mershant_screens/first_page.dart';
-import 'package:store/model/users.dart';
-import 'package:store/utilites/button.dart';
-import 'package:store/utilites/users_db.dart';
+import 'package:store/model/usersModel.dart';
+import 'package:store/utilites/my_btton.dart';
+import 'package:store/utilites/userDatabase.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -34,8 +34,8 @@ class _LoginState extends State<Login> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "Login",
-                style: TextStyle(fontSize: 64),
+                "Sign In",
+                style: TextStyle(fontSize: 64, color: Colors.red),
               ),
             ),
             Padding(

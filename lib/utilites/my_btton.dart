@@ -21,7 +21,7 @@ class MyButton extends StatelessWidget {
         child: Ink(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.blue, Colors.cyan],
+              colors: [Colors.red, Colors.redAccent],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),

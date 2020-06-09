@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:store/mershant_screens/add_products.dart';
 import 'package:store/mershant_screens/orders.dart';
-import 'package:store/utilites/button.dart';
+import 'package:store/utilites/my_btton.dart';
 
 class ControlPanel extends StatefulWidget {
   @override
@@ -37,7 +37,7 @@ class _ControlPanelState extends State<ControlPanel> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Orders(),
+                    builder: (context) => OrderList(),
                   ),
                 );
               },

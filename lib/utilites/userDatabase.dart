@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:store/model/users.dart';
+import 'package:store/model/usersModel.dart';
 
 class UserDatabase {
   static UserDatabase userDatabase;
@@ -45,11 +45,6 @@ class UserDatabase {
             " $__password INTEGER, $__type TEXT )");
   }
 
-  Future<List<Map<String, dynamic>>> usersList() async {
-    Database db = await this.database;
-    var result = await db.query(tableName, orderBy: "$_id ASC");
-    return result;
-  }
 
   Future<List<User>> users() async {
     // Get a reference to the database.

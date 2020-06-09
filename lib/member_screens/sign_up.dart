@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:store/member_screens/login.dart';
-import 'package:store/model/users.dart';
-import 'package:store/utilites/button.dart';
-import 'package:store/utilites/users_db.dart';
+import 'package:store/member_screens/sign_in.dart';
+import 'package:store/model/usersModel.dart';
+import 'package:store/utilites/my_btton.dart';
+import 'package:store/utilites/userDatabase.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -27,7 +27,6 @@ class _SignUpState extends State<SignUp> {
         User(name: name, email: email, type: selectedItem, password: password);
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
         body: Column(
           children: <Widget>[
             SizedBox(
@@ -36,7 +35,7 @@ class _SignUpState extends State<SignUp> {
             Expanded(
               child: Text(
                 "Sign Up",
-                style: TextStyle(fontSize: 58),
+                style: TextStyle(fontSize: 58, color: Colors.red),
               ),
             ),
             SizedBox(
@@ -145,5 +144,6 @@ class _SignUpState extends State<SignUp> {
   void _save() async {
     var s = await userDatabase.insertUser(user);
     print(s);
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Login(),));
   }
 }

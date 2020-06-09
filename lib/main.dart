@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:store/member_screens/login.dart';
+import 'package:store/member_screens/sign_in.dart';
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
-      primaryColor: Colors.lightBlue,
+      primaryColor: Colors.red,
     ),
-    home: HomePage(),
+    home: MyApp(),
   ));
 }
 
-class HomePage extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

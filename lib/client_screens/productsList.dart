@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:store/client_screens/product_details.dart';
 import 'package:store/model/products_model.dart';
-import 'package:store/utilites/products_db.dart';
+import 'package:store/utilites/productDatabase.dart';
 
 class Products extends StatefulWidget {
   @override
@@ -48,7 +48,7 @@ class _ProductsState extends State<Products> {
                                 Text(item.category),
                                 Text(
                                   item.price,
-                                  style: TextStyle(color: Colors.blue),
+                                  style: TextStyle(color: Colors.red),
                                 ),
                                 Text(item.desc),
                               ],
@@ -65,7 +65,7 @@ class _ProductsState extends State<Products> {
                                     ),
                                   );
                                 },
-                                color: Colors.cyanAccent[400],
+                                color: Colors.redAccent[400],
                                 child: Text(
                                   'Product Details',
                                   style: TextStyle(

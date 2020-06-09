@@ -50,11 +50,6 @@ class OrderDatabase {
             " $__client_name TEXT, $__details TEXT, $__address TEXT )");
   }
 
-  Future<List<Map<String, dynamic>>> ordersList() async {
-    Database db = await this.database;
-    var result = await db.query(tableName, orderBy: "$_id ASC");
-    return result;
-  }
 
   getAllOrders() async {
     final db = await database;

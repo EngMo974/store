@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:store/client_screens/confirm_page.dart';
+import 'package:store/client_screens/confirmation.dart';
 import 'package:store/model/products_model.dart';
-import 'package:store/utilites/button.dart';
-import 'package:store/utilites/products_db.dart';
+import 'package:store/utilites/my_btton.dart';
+import 'package:store/utilites/productDatabase.dart';
 
 class Cart extends StatefulWidget {
   @override

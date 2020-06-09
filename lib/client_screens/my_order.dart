@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store/client_screens/products.dart';
-import 'package:store/utilites/button.dart';
+import 'package:store/client_screens/productsList.dart';
+import 'package:store/utilites/my_btton.dart';
 
 class MyOrder extends StatefulWidget {
   @override
@@ -36,8 +36,6 @@ class _MyOrderState extends State<MyOrder> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           SizedBox(
-                            child: Image.network(
-                                'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTFVrrSLddxRJ8K_jKHqqBNPSYv8OZKdRnv2MdUUqkSkyRlRypP&usqp=CAU'),
                             width: 108,
                             height: 108,
                           ),
@@ -60,7 +58,7 @@ class _MyOrderState extends State<MyOrder> {
                                   ),
                                   Text(
                                     '\$34.00',
-                                    style: TextStyle(color: Colors.blue),
+                                    style: TextStyle(color: Colors.red),
                                   ),
                                 ],
                               ),

@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:store/client_screens/products.dart';
+import 'package:store/client_screens/productsList.dart';
 import 'package:store/model/products_model.dart';
-import 'package:store/utilites/button.dart';
+import 'package:store/utilites/my_btton.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:store/utilites/products_db.dart';
+import 'package:store/utilites/productDatabase.dart';
 
 class AddProducts extends StatefulWidget {
   @override
