@@ -1,11 +1,11 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:store/member_screens/sign_up.dart';
-
+import 'package:store/mershant_screens/first_page.dart';
+import 'package:store/model/users.dart';
 import 'package:store/utilites/button.dart';
+import 'package:store/utilites/users_db.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -13,18 +13,21 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  var name;
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  UserDatabase userDatabase = UserDatabase();
   var email;
 
   var password;
 
-  var type;
+  User user;
 
   @override
   Widget build(BuildContext context) {
+    user = User(email: email, password: password);
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
         body: ListView(
           padding: EdgeInsets.only(top: 32),
           children: <Widget>[
@@ -60,10 +63,13 @@ class _LoginState extends State<Login> {
             ),
             MyButton(
               text: "Login",
-              onPressed: () async {},
-            ),
-            SizedBox(
-              height: 16,
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ControlPanel(),
+                    ));
+              },
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -87,5 +93,14 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+
+  void getData() async {
+    List<User> ss = await userDatabase.users();
+    ss.forEach((element) {
+      User(name: element.name, type: element.type, email: element.email);
+      var s = element.name;
+      print(s);
+    });
   }
 }

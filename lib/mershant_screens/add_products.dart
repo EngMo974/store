@@ -1,8 +1,10 @@
 import 'dart:io';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:store/client_screens/products.dart';
+import 'package:store/model/products_model.dart';
 import 'package:store/utilites/button.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:store/utilites/products_db.dart';
 
 class AddProducts extends StatefulWidget {
   @override
@@ -10,24 +12,55 @@ class AddProducts extends StatefulWidget {
 }
 
 class _AddProductsState extends State<AddProducts> {
+  ProductsDatabase productsDatabase = ProductsDatabase();
+  ProductsModel productsModel;
   var pName;
   var pPrice;
   var pCategory;
   var pDesc;
-  StorageReference storageReference = FirebaseStorage.instance.ref();
   File _image;
   final picker = ImagePicker();
+  String s;
 
   void getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
     setState(() {
       _image = File(pickedFile.path);
+      s = _image.toString();
     });
+  }
+
+  void insertProduct() async {
+    if (productsModel.category != null &&
+        productsModel.price != null &&
+        productsModel.name != null &&
+        productsModel.image != null) {
+      var s = await productsDatabase.insertProduct(productsModel);
+      print(s);
+    } else {
+      print('invalid insertion');
+    }
+
+    var g = await productsDatabase.productsList();
+    print(g);
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Products(),
+        ));
   }
 
   @override
   Widget build(BuildContext context) {
+    productsModel = ProductsModel(
+      name: pName,
+      category: pCategory,
+      desc: pDesc,
+      image: s,
+      price: pPrice,
+    );
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -69,7 +102,7 @@ class _AddProductsState extends State<AddProducts> {
             ),
             MyButton(
               text: 'Add Product',
-              onPressed: () {},
+              onPressed: insertProduct,
             ),
             SizedBox(
               height: 8,

@@ -1,10 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:store/member_screens/login.dart';
-import 'package:store/utilites/auth_service.dart';
+import 'package:store/model/users.dart';
 import 'package:store/utilites/button.dart';
-import 'package:store/utilites/drop_down.dart';
+import 'package:store/utilites/users_db.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -20,10 +18,13 @@ class _SignUpState extends State<SignUp> {
 
   var password;
 
-  var type;
+  var user;
+  UserDatabase userDatabase = UserDatabase();
 
   @override
   Widget build(BuildContext context) {
+    user =
+        User(name: name, email: email, type: selectedItem, password: password);
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomPadding: false,
@@ -113,7 +114,7 @@ class _SignUpState extends State<SignUp> {
             ),
             MyButton(
               text: "Sing Up",
-              onPressed: () {},
+              onPressed: _save,
             ),
             SizedBox(
               height: 16,
@@ -126,14 +127,23 @@ class _SignUpState extends State<SignUp> {
                 FlatButton(
                   child: Text("Sign in"),
                   onPressed: () {
-                    setState(() async {});
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Login(),
+                        ));
                   },
-                )
+                ),
               ],
             ),
           ],
         ),
       ),
     );
+  }
+
+  void _save() async {
+    var s = await userDatabase.insertUser(user);
+    print(s);
   }
 }
