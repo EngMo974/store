@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:store/client_screens/products.dart';
@@ -24,13 +23,18 @@ class _LoginState extends State<Login> {
 
   var type;
 
+  String getEmail(email){
+    email = email;
+    return email;
+  }
+
   final _firestore = Firestore.instance;
   final FirebaseAuth _aut = FirebaseAuth.instance;
 
   Future<void> login() async {
-    var res = await getDataStream(email);
+    var res = await getDataStream(getEmail(email).trim());
     FirebaseUser user = (await _aut.signInWithEmailAndPassword(
-      email: email,
+      email: getEmail(email).trim(),
       password: password,
     ))
         .user;
@@ -129,7 +133,7 @@ class _LoginState extends State<Login> {
         if (email == user['email']) {
           return user['type'];
         } else
-          print('');
+          null;
       }
       ;
     }

@@ -2,9 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:store/member_screens/login.dart';
-import 'package:store/utilites/auth_service.dart';
+
 import 'package:store/utilites/button.dart';
-import 'package:store/utilites/drop_down.dart';
+
+import 'login.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _SignUpState extends State<SignUp> {
   String selectedItem = 'Client';
   var name;
 
-  var email;
+  String email;
 
   var password;
 
@@ -26,21 +27,28 @@ class _SignUpState extends State<SignUp> {
 
   Future<void> registerUser() async {
     FirebaseUser user = (await _aut.createUserWithEmailAndPassword(
-      email: email,
+      email: getEmail(email).trim(),
       password: password,
     ))
         .user;
 
-    Firestore.instance
-        .collection('users')
-        .document()
-        .setData({'userid': user.uid, 'name': name, 'type': selectedItem,'email':email});
+    Firestore.instance.collection('users').document().setData({
+      'userid': user.uid,
+      'name': name,
+      'type': selectedItem,
+      'email': email
+    });
 
     Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => Login(),
         ));
+  }
+
+  String getEmail(var email) {
+    email = email;
+    return email;
   }
 
   @override
@@ -147,7 +155,11 @@ class _SignUpState extends State<SignUp> {
                 FlatButton(
                   child: Text("Sign in"),
                   onPressed: () {
-                    setState(() async {});
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Login(),
+                        ));
                   },
                 )
               ],
@@ -157,4 +169,6 @@ class _SignUpState extends State<SignUp> {
       ),
     );
   }
+
+
 }
